@@ -7,6 +7,6 @@ class Solution {
         for(char c : s.toCharArray()){
             map.compute(c, (k,v) -> v==1 ? null :v-1);
         }
-        return map.keySet().stream().findFirst().get().charValue();
+        return map.keySet().stream().findFirst().get();
     }
 }
