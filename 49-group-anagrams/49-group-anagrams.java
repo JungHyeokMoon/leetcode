@@ -8,7 +8,7 @@ class Solution {
             }
             map.compute(countMap, (k, v) -> v == null ? new ArrayList<>() : v).add(str);
         }
-        List<List<String>> answer = new ArrayList<>(map.values());
-        return answer;
+        return new ArrayList<>(map.values());
+
     }   
 }
