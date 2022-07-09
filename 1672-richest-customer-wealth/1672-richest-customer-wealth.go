@@ -1,10 +1,8 @@
 func maximumWealth(accounts [][]int) int {
-    ret := math.MinInt32
-    
+	ret := math.MinInt32
+
 	for _, account := range accounts {
-        sumCh := make(chan int)
-        go sumOfArray(account, sumCh)
-        tempSum := <-sumCh
+		tempSum := sumOfArray(account)
 		if tempSum > ret {
 			ret = tempSum
 		}
@@ -13,10 +11,10 @@ func maximumWealth(accounts [][]int) int {
 	return ret
 }
 
-func sumOfArray(array []int, sumCh chan int) {
+func sumOfArray(array []int) int {
 	sum := 0
 	for _, val := range array {
 		sum += val
 	}
-	sumCh <- sum
+	return sum
 }
