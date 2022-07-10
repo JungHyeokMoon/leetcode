@@ -1,6 +1,6 @@
 func firstPalindrome(words []string) (ret string) {
-    for _, word := range words{
-		if(isPalindrome(word)){
+	for _, word := range words {
+		if isPalindrome(word) {
 			return word
 		}
 	}
@@ -9,15 +9,10 @@ func firstPalindrome(words []string) (ret string) {
 }
 
 func isPalindrome(word string) bool {
-	wordLength := len(word)
-	lo, hi :=0, wordLength-1
-
-	for lo<=hi{
-		if(word[lo]!=word[hi]){
+	for lo, hi := 0, len(word)-1; lo <= hi; lo, hi = lo+1, hi-1 {
+		if word[lo] != word[hi] {
 			return false
 		}
-		lo++
-		hi--
 	}
 
 	return true
