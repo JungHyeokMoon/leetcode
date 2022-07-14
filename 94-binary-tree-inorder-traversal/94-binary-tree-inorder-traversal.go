@@ -6,6 +6,8 @@
  *     Right *TreeNode
  * }
  */
+
+/*
 func inorderTraversal(root *TreeNode) (ret []int) {
     
     var helper func(cur *TreeNode)
@@ -20,4 +22,27 @@ func inorderTraversal(root *TreeNode) (ret []int) {
     
     helper(root)
     return 
+}
+*/
+
+func inorderTraversal(root *TreeNode) (ret []int) {
+
+	stack := []*TreeNode{}
+	cur := root
+
+	for cur != nil || len(stack) != 0 {
+
+		for cur != nil {
+			stack = append(stack, cur)
+			cur = cur.Left
+		}
+
+		pop := stack[len(stack)-1]
+		stack = stack[:len(stack)-1]
+		ret = append(ret, pop.Val)
+
+		cur = pop.Right
+	}
+
+	return
 }
