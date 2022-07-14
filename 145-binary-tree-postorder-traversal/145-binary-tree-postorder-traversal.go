@@ -6,6 +6,7 @@
  *     Right *TreeNode
  * }
  */
+/*
 func postorderTraversal(root *TreeNode) (ret []int) {
     
     var helper func(cur *TreeNode)
@@ -20,4 +21,29 @@ func postorderTraversal(root *TreeNode) (ret []int) {
     
     helper(root)
     return
+}
+*/
+func postorderTraversal(root *TreeNode) (ret []int) {
+
+	stack := []*TreeNode{}
+	cur := root
+
+	for cur != nil || len(stack) != 0 {
+
+		for cur != nil {
+			ret = append(ret, cur.Val)
+			stack = append(stack, cur)
+			cur = cur.Right
+		}
+
+		pop := stack[len(stack)-1]
+		stack = stack[:len(stack)-1]
+		cur = pop.Left
+	}
+
+	for i, j := 0, len(ret)-1; i < j; i, j = i+1, j-1 {
+		ret[i], ret[j] = ret[j], ret[i]
+	}
+
+	return
 }
