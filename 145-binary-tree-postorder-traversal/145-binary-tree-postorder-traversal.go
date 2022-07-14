@@ -41,6 +41,7 @@ func postorderTraversal(root *TreeNode) (ret []int) {
 		cur = pop.Left
 	}
 
+    //preorder Right를 뒤집기
 	for i, j := 0, len(ret)-1; i < j; i, j = i+1, j-1 {
 		ret[i], ret[j] = ret[j], ret[i]
 	}
