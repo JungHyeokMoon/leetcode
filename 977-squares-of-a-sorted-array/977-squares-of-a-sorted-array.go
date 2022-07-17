@@ -1,10 +1,24 @@
 func sortedSquares(nums []int) []int {
-	for idx, val := range nums {
-		nums[idx] = val * val
+	ret := make([]int, len(nums))
+	s, e := 0, len(nums)-1
+
+	for idx := e; idx >= 0; idx-- {
+		if absS, absE := abs(nums[s]), abs(nums[e]); absS > absE {
+			ret[idx] = absS * absS
+			s++
+		} else {
+			ret[idx] = absE * absE
+			e--
+		}
 	}
 
-	sort.Ints(nums)
+	return ret
 
-	return nums
+}
 
+func abs(num int) int {
+	if num < 0 {
+		return num * -1
+	}
+	return num
 }
